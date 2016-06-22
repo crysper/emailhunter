@@ -7,7 +7,7 @@ module EmailHunter
   class Generate
     attr_reader :status, :email, :score
 
-    def initialize(domain, company, first_name, last_name, key)
+    def initialize(company, domain, first_name, last_name, key)
       @first_name = first_name
       @last_name = last_name
       @domain = domain
