@@ -30,8 +30,8 @@ module EmailHunter
     end
 
     # Email Generate API
-    def generate(domain, first_name, last_name)
-      EmailHunter::Generate.new(domain, first_name, last_name, self.key).hunt
+    def generate(company, domain, first_name, last_name)
+      EmailHunter::Generate.new(company, domain, first_name, last_name, self.key).hunt
     end
 
     def count(domain)
