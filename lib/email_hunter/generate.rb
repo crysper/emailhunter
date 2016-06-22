@@ -7,10 +7,11 @@ module EmailHunter
   class Generate
     attr_reader :status, :email, :score
 
-    def initialize(domain, first_name, last_name, key)
+    def initialize(domain, company, first_name, last_name, key)
       @first_name = first_name
       @last_name = last_name
       @domain = domain
+      @company = company
       @key = key
     end
 
@@ -22,7 +23,7 @@ module EmailHunter
     private
 
     def apiresponse
-      url = URI.parse(URI.encode("#{API_GENERATE_URL}domain=#{@domain}&first_name=#{@first_name}&last_name=#{@last_name}&api_key=#{@key}"))
+      url = URI.parse(URI.encode("#{API_GENERATE_URL}domain=#{@domain}&company=#{@company}&first_name=#{@first_name}&last_name=#{@last_name}&api_key=#{@key}"))
       response = Faraday.new(url).get
       response.success? ? JSON.parse(response.body, {symbolize_names: true}) : []
     end
